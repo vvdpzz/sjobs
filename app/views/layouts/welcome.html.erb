@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sjobs</title>
+  <title>Welcome</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<div class="container">
-		<%= yield %>
+		<div class="row">
+			<div class="span8">
+				<%= render "/devise/registrations/new" %>
+			</div>
+			<div class="span8">
+				<%= yield %>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

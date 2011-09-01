@@ -10,7 +10,56 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110831092045) do
+ActiveRecord::Schema.define(:version => 20110831095124) do
+
+  create_table "answers", :force => true do |t|
+    t.integer  "user_id",                        :null => false
+    t.integer  "question_id",                    :null => false
+    t.text     "content",                        :null => false
+    t.boolean  "is_correct",  :default => false
+    t.integer  "votes_count", :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
+  add_index "answers", ["user_id"], :name => "index_answers_on_user_id"
+
+  create_table "credit_transactions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "winner_id"
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.boolean  "payment",      :default => true
+    t.integer  "value"
+    t.integer  "trade_type"
+    t.integer  "trade_status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "credit_transactions", ["answer_id"], :name => "index_credit_transactions_on_answer_id"
+  add_index "credit_transactions", ["question_id"], :name => "index_credit_transactions_on_question_id"
+  add_index "credit_transactions", ["user_id"], :name => "index_credit_transactions_on_user_id"
+  add_index "credit_transactions", ["winner_id"], :name => "index_credit_transactions_on_winner_id"
+
+  create_table "money_transactions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "winner_id"
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.decimal  "value",        :precision => 8, :scale => 2
+    t.boolean  "payment",                                    :default => true
+    t.integer  "trade_type"
+    t.integer  "trade_status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "money_transactions", ["answer_id"], :name => "index_money_transactions_on_answer_id"
+  add_index "money_transactions", ["question_id"], :name => "index_money_transactions_on_question_id"
+  add_index "money_transactions", ["user_id"], :name => "index_money_transactions_on_user_id"
+  add_index "money_transactions", ["winner_id"], :name => "index_money_transactions_on_winner_id"
 
   create_table "questions", :force => true do |t|
     t.integer  "user_id",                                                          :null => false

@@ -1,49 +1,43 @@
 class QuestionsController < ApplicationController
-  # GET /questions
-  # GET /questions.json
+
   def index
     @questions = Question.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render :json => @questions }
     end
   end
 
-  # GET /questions/1
-  # GET /questions/1.json
   def show
     @question = Question.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render :json => @question }
     end
   end
 
-  # GET /questions/new
-  # GET /questions/new.json
   def new
     @question = Question.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render :json => @question }
     end
   end
 
-  # GET /questions/1/edit
   def edit
-    @question = Question.find(params[:id])
+    @question = current_user.questions.find(params[:id])
   end
 
-  # POST /questions
-  # POST /questions.json
   def create
-    @question = Question.new(params[:question])
+    @question = current_user.questions.build(params[:question])
 
     respond_to do |format|
       if @question.save
+        @question.credit_rewarded? and @question.deduct_credit and @question.order_credit
+        @question.money_rewarded? and @question.deduct_money and @question.order_money
         format.html { redirect_to @question, :notice => 'Question was successfully created.' }
         format.json { render :json => @question, :status => :created, :location => @question }
       else
@@ -53,10 +47,8 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # PUT /questions/1
-  # PUT /questions/1.json
   def update
-    @question = Question.find(params[:id])
+    @question = current_user.questions.find(params[:id])
 
     respond_to do |format|
       if @question.update_attributes(params[:question])
@@ -69,10 +61,8 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # DELETE /questions/1
-  # DELETE /questions/1.json
   def destroy
-    @question = Question.find(params[:id])
+    @question = current_user.questions.find(params[:id])
     @question.destroy
 
     respond_to do |format|

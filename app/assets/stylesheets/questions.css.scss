@@ -1,3 +1,61 @@
-// Place all the styles related to the questions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$text_gray: #ababab;
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-o-border-radius: $radius;
+	border-radius: $radius;
+}
+
+#questions{
+	.question{
+		border-bottom: 1px solid #CCDCEF;
+		padding: 10px 0;
+	}
+	.status{
+	  float:left;
+  	color: $text_gray;
+		border: 1px dashed #CCDCEF;
+		width:120px;
+		@include border-radius(5px);
+	}
+}
+.question{
+	.summary{
+		margin-left:136px;
+		.excerpt{
+			min-height:42px;
+		}
+		h5{
+			font-weight:normal;
+			line-height:21px;
+		}
+		.timestamp{
+			color: #5F88CE;
+			font-size:12px;
+		}
+	}
+}
+.status{
+	.square{
+		float:left;
+		font-size:13px;
+		height:60px;
+		width:60px;
+		text-align:center;
+	}
+	.count{
+		font-size:24px;
+		line-height:30px;
+		padding-top: 5px;
+	}
+}
+
+.blank{
+  background: white;
+  margin-top: 18px;
+  margin-bottom: 18px;
+  padding:0;
+  padding-left: 150px;
+  border-top: none;
+}

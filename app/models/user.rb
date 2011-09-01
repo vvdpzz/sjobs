@@ -13,12 +13,22 @@ class User < ActiveRecord::Base
   
   before_create :create_login
   
+  # Relations
+  has_many :questions
+  has_many :answers
+  has_many :money_transactions
+  has_many :credit_transactions
+  has_many :credit_prizes, :class_name => "CreditTransaction", :foreign_key => "winner_id"
+  has_many :money_prizes, :class_name => "MoneyTransaction", :foreign_key => "winner_id"
+  
   protected
 
   def create_login
-    email = self.email.split(/@/)
-    login_taken = User.where(:username => email[0]).first
-    self.username = email[0] unless login_taken
+    if self.username.empty?
+      email = self.email.split(/@/)
+      login_taken = User.where(:username => email[0]).first
+      self.username = email[0] unless login_taken
+    end
   end
 
   def self.find_for_database_authentication(warden_conditions)

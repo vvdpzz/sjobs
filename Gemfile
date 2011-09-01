@@ -17,6 +17,8 @@ gem 'redis'
 
 gem 'resque'
 
+gem 'enumerate_it'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -28,7 +30,7 @@ end
 gem 'jquery-rails'
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'

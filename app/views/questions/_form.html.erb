@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
-  </div>
-  <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
@@ -23,6 +19,16 @@
     <%= f.label :content %><br />
     <%= f.text_area :content %>
   </div>
+	<% if not edit_mode %>
+  <div class="field">
+    <%= f.label :credit %><br />
+    <%= f.text_field :credit %>
+  </div>
+  <div class="field">
+    <%= f.label :money %><br />
+    <%= f.text_field :money %>
+  </div>
+	<% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

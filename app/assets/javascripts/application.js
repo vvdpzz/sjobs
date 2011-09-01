@@ -7,3 +7,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(function() {
+  $("#user_email").keyup(function(){
+    $("#user_username").val($("#user_email").val().split('@')[0]);
+  });
+});
