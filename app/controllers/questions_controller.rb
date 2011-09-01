@@ -1,10 +1,11 @@
 class QuestionsController < ApplicationController
 
   def index
-    @questions = Question.all
+    @questions = Question.page(params[:page]).per(1)
 
     respond_to do |format|
       format.html
+      format.js
       format.json { render :json => @questions }
     end
   end

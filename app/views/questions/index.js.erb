@@ -1,0 +1,2 @@
+$("#questions").append('<%= j(render "index", :questions => @questions) %>');
+current_page = "<%= (params[:page] || "1").to_i + 1 %>";

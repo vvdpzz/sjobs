@@ -1,0 +1,11 @@
+defaults: &defaults
+  answer_price: 5
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
