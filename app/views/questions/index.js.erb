@@ -1,2 +1,5 @@
-$("#questions").append('<%= j(render "index", :questions => @questions) %>');
-current_page = "<%= (params[:page] || "1").to_i + 1 %>";
+<% if not @questions.empty? %>
+  $("#questions").append('<%= j(render "index", :questions => @questions) %>');
+<% else %>
+  $("#load-more").remove();
+<% end %>

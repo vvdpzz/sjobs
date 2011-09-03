@@ -9,13 +9,16 @@ $text_gray: #ababab;
 
 #questions{
 	.question{
-		border-bottom: 1px solid #CCDCEF;
+		border-bottom: 1px solid #CDDCF9;
 		padding: 10px 0;
+	}
+	.question:last-child{
+	  border-bottom:none;
 	}
 	.status{
 	  float:left;
   	color: $text_gray;
-		border: 1px dashed #CCDCEF;
+		border: 1px dashed #CDDCF9;
 		width:120px;
 		@include border-radius(5px);
 	}
@@ -58,4 +61,33 @@ $text_gray: #ababab;
   padding:0;
   padding-left: 150px;
   border-top: none;
+}
+
+.loading{
+  position: relative;
+  height: 39px;
+  text-align: center;
+//  background-color: #EDEFF4;
+//  border: 1px solid #D8DFEA;
+  background: #EBF2FC;
+  border: 1px solid #CDDCF9;
+  .blueText{
+    color: #3B5998;
+    padding:12px;
+  }
+  .spinner {
+    display: block;
+    height: 11px;
+    width: 16px;
+    background-image: url(/assets/loading.gif);
+    margin: 14px auto;
+  }
+  .btn{
+    color:#777;
+    margin:11px;
+  }
+}
+.uiBoxLightblue {
+background-color: #EDEFF4;
+border: 1px solid #D8DFEA;
 }

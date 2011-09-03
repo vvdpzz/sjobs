@@ -22,7 +22,7 @@
 	<% if not edit_mode %>
   <div class="field">
     <%= f.label :credit %><br />
-    <%= f.text_field :credit %>
+    <%= f.text_field :credit, :rel => "popover", :data => {:title => "A Title", :content => "You need 5 credits at least."} %>
   </div>
   <div class="field">
     <%= f.label :money %><br />
@@ -33,3 +33,10 @@
     <%= f.submit %>
   </div>
 <% end %>
+<script>
+  $(function () {
+    $("input[rel=popover]").popover({
+      offset: 10
+    })
+  })
+</script>
