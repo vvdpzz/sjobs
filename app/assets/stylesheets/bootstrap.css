@@ -271,7 +271,7 @@ table {
 .row {
   zoom: 1;
   margin-bottom: 18px;
-  margin-left: -20px;
+/*  margin-left: -20px;*/
 }
 .row:before, .row:after {
   display: table;
