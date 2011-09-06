@@ -4,7 +4,8 @@
 			<%= render "index", :questions => @questions %>
 		</div>
 		<div id="load-more" class="loading">
-			<div class="blueText">Load More</div>
+			<div class="blueText">更多问题</div>
+			<div class="spinner"></div>
 		</div>
 	</div>
 	<div class="col3">Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World </div>
@@ -19,10 +20,12 @@ $(function() {
 			dataType: "script",
 			data: {page: ++current_page},
 			beforeSend: function(){
-				$("#load-more").html('<span class="spinner"></span>');
+				$("#load-more .blueText").hide();
+				$("#load-more .spinner").show();
 			},
 			complete: function(){
-				$("#load-more").html('<div class="blueText">Load More</div>');
+				$("#load-more .spinner").hide();
+				$("#load-more .blueText").show();
 			}
 		});
 		return false;

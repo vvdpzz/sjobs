@@ -67,27 +67,18 @@ $text_gray: #ababab;
   position: relative;
   height: 39px;
   text-align: center;
-//  background-color: #EDEFF4;
-//  border: 1px solid #D8DFEA;
   background: #EBF2FC;
   border: 1px solid #CDDCF9;
+  cursor:pointer;
   .blueText{
     color: #3B5998;
     padding:12px;
   }
   .spinner {
-    display: block;
     height: 11px;
     width: 16px;
     background-image: url(/assets/loading.gif);
     margin: 14px auto;
+    display:none;
   }
-  .btn{
-    color:#777;
-    margin:11px;
-  }
-}
-.uiBoxLightblue {
-background-color: #EDEFF4;
-border: 1px solid #D8DFEA;
 }

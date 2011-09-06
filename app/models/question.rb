@@ -43,4 +43,13 @@ class Question < ActiveRecord::Base
     end
   end
   
+  def follow_user_ids
+    FollowedQuestion.select('user_id').where(:question_id => self.id, :followed => 1).collect{ |item| item.user_id }
+  end
+  
+  # asyncs
+  def async_new_answer(answer_id)
+    Resque.enqueue(NewAnswer, self.id, answer_id)
+  end
+  
 end

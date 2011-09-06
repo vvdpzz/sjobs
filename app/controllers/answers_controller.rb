@@ -6,6 +6,7 @@ class AnswersController < ApplicationController
     respond_to do |format|
       if @answer.save
         question.not_free? and question.correct_answer_id == 0 and @answer.deduct_credit and @answer.order_credit
+        question.async_new_answer(@answer.id)
         format.html { redirect_to question, :notice => 'Answer was successfully created.' }
         format.json { render :json => @answer, :status => :created, :location => [question, @answer] }
       else
