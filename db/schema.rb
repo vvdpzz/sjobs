@@ -10,11 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20110908092925) do
-=======
 ActiveRecord::Schema.define(:version => 20110909081450) do
->>>>>>> a712ae6a7e6385765445a2d8b94394fe330eed04
 
   create_table "answers", :force => true do |t|
     t.integer  "user_id",                        :null => false
@@ -47,8 +43,6 @@ ActiveRecord::Schema.define(:version => 20110909081450) do
   add_index "credit_transactions", ["user_id"], :name => "index_credit_transactions_on_user_id"
   add_index "credit_transactions", ["winner_id"], :name => "index_credit_transactions_on_winner_id"
 
-<<<<<<< HEAD
-=======
   create_table "favorite_questions", :force => true do |t|
     t.integer  "user_id"
     t.integer  "question_id"
@@ -71,7 +65,6 @@ ActiveRecord::Schema.define(:version => 20110909081450) do
   add_index "followed_questions", ["question_id"], :name => "index_followed_questions_on_question_id"
   add_index "followed_questions", ["user_id"], :name => "index_followed_questions_on_user_id"
 
->>>>>>> a712ae6a7e6385765445a2d8b94394fe330eed04
   create_table "money_transactions", :force => true do |t|
     t.integer  "user_id"
     t.integer  "winner_id"
@@ -154,16 +147,5 @@ ActiveRecord::Schema.define(:version => 20110909081450) do
   add_index "votes", ["answer_id"], :name => "index_votes_on_answer_id"
   add_index "votes", ["question_id"], :name => "index_votes_on_question_id"
   add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
-
-  create_table "watched_questions", :force => true do |t|
-    t.integer  "user_id",                       :null => false
-    t.integer  "question_id",                   :null => false
-    t.boolean  "status",      :default => true, :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "watched_questions", ["question_id"], :name => "index_watched_questions_on_question_id"
-  add_index "watched_questions", ["user_id"], :name => "index_watched_questions_on_user_id"
 
 end

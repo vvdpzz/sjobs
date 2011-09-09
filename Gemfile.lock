@@ -46,11 +46,8 @@ GEM
       warden (~> 1.0.3)
     devise_invitable (0.5.4)
       devise (~> 1.4.1)
-<<<<<<< HEAD
       rails (< 3.2, >= 3.0.0)
-=======
       rails (>= 3.0.0, < 3.2)
->>>>>>> a712ae6a7e6385765445a2d8b94394fe330eed04
     enumerate_it (0.7.8)
       activesupport (>= 2.3.2)
     erubis (2.7.0)

@@ -40,6 +40,7 @@ sudo install_name_tool -change libmysqlclient.18.dylib /usr/local/mysql/lib/libm
 
 ### 使用默认路由和默认 Devise::InvitationsController 中 的 四 种 action
 Detail: https://raw.github.com/scambra/devise_invitable/master/app/controllers/devise/invitations_controller.rb
+
     6.# routes.rb
         devise_for :users
 
