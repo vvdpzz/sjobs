@@ -13,6 +13,8 @@ gem 'json'
 
 gem 'devise'
 
+gem 'devise_invitable'
+
 gem 'redis'
 
 gem 'resque'
