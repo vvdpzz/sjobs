@@ -28,19 +28,23 @@
 			<%= render @question.answers %>
 		</div>
 	</div>
-</div>
-
-<% status = @question.watched_by?(current_user.id) %>
-<% btn_color = status ? "success" : "" %>
-<% btn_text = status ? :watched : :unwatch %>
-<%= link_to t(btn_text),
-		watch_question_path(@question),
-		:id => "watch-question", :class => "btn #{btn_color}" %>
-
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
-
-<div id="answers">
+	<div class="col3">
+		<div class="operations clearfix">
+			<% followed = @question.followed_by?(current_user.id) %>
+			<% btn_color = followed ? "" : "success" %>
+			<% btn_text = followed ? :followed : :unfollow %>
+			<%= link_to t(btn_text),
+					follow_question_path(@question),
+					:id => "follow-question", :class => "btn #{btn_color}" %>
+			
+			<% favorited = @question.favorited_by?(current_user.id) %>
+			<% btn_color = favorited ? "" : "success" %>
+			<% btn_text = favorited ? :favorited : :unfavorite %>
+			<%= link_to t(btn_text),
+					favorite_question_path(@question),
+					:id => "favorite-question", :class => "btn #{btn_color}" %>
+		</div>
+	</div>
 </div>
 <%= form_for [@question, Answer.new] do |f| %>
   <%= f.hidden_field :question_id, :value => @question.id %>

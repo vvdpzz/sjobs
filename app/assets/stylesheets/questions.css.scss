@@ -168,16 +168,32 @@ background-position: 0px -330px;
 }
 
 //
-.container h3 a{
-  color: #62412E;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, .5);
-  font-weight:bold;
-  background:url(/assets/bee.png) no-repeat 0px 2px;
-  height:40px;
+#ask-question{
+	width: 190px;
+	height:46px;
+	line-height:46px;
+	color:white;
+	font-size:30px;
+	margin-top:10px;
 }
-.topbar ul .active a, .nav a{
-  color: #62412E;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, .5);
-  font-size:14px;
-  line-height:60px;
+a.buttonLink{
+	border: 1px solid #EDA42E;
+	text-shadow: 0 -1px 0 #EDA42E;
+	background: #FEC965;
+	background: -moz-linear-gradient(top,#FEC965 0,#FEBC3E 100%);
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#FEC965),color-stop(100%,#FEBC3E));
+	background: -webkit-linear-gradient(top,#FEC965 0,#FEBC3E 100%);
+	background: -o-linear-gradient(top,#FEC965 0,#FEBC3E 100%);
+	background: -ms-linear-gradient(top,#FEC965 0,#FEBC3E 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FEC965',endColorstr='#FEBC3E',GradientType=0);
+	background: linear-gradient(top,#FEC965 0,#FEBC3E 100%);
+	display: inline-block;
+	text-decoration:none;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	padding: 3px 5px 4px;
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
 }

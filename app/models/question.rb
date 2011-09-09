@@ -47,12 +47,17 @@ class Question < ActiveRecord::Base
     end
   end
   
-  def watched_user_ids
-    WatchedQuestion.select('user_id').where(:question_id => self.id, :status => true).collect{ |item| item.user_id }
+  def followed_user_ids
+    FollowedQuestion.select('user_id').where(:question_id => self.id, :status => true).collect{ |item| item.user_id }
   end
   
-  def watched_by?(user_id)
-    records = WatchedQuestion.where(:user_id => user_id, :question_id => self.id)
+  def followed_by?(user_id)
+    records = FollowedQuestion.where(:user_id => user_id, :question_id => self.id)
+    records.empty? ? false : records.first.status
+  end
+  
+  def favorited_by?(user_id)
+    records = FavoriteQuestion.where(:user_id => user_id, :question_id => self.id)
     records.empty? ? false : records.first.status
   end
   

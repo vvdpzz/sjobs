@@ -7,11 +7,3 @@
  *= require 978
  *= require_tree . 
 */
-.topbar-inner, .topbar .bar {
-  height:40px;
-  background:url(/assets/LeatherTile.png) repeat-x;
-}
-.topbar-inner, .topbar .tile {
-  height:15px;
-  background:url(/assets/CanvasTopTile.png) repeat-x;
-}

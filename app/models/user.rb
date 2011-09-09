@@ -16,11 +16,15 @@ class User < ActiveRecord::Base
   # Relations
   has_many :questions
   has_many :answers
+  
   has_many :money_transactions
   has_many :credit_transactions
+  
   has_many :credit_prizes, :class_name => "CreditTransaction", :foreign_key => "winner_id"
   has_many :money_prizes, :class_name => "MoneyTransaction", :foreign_key => "winner_id"
-  has_many :watched_questions, :class_name => "WatchedQuestion", :foreign_key => "user_id", :conditions => {:status => true}
+  
+  has_many :favorite_questions, :class_name => "FavoriteQuestion", :foreign_key => "user_id", :conditions => {:status => true}
+  has_many :followed_questions, :class_name => "FollowedQuestion", :foreign_key => "user_id", :conditions => {:status => true}
   
   protected
 
