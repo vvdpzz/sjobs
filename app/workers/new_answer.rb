@@ -3,16 +3,41 @@ class NewAnswer
 
   def self.perform(question_id, answer_id)
     question = Question.find question_id
-    answer = Answer.find answer_id
-    hash = {
-      :question_id => question_id, :question_title => question.title,
-      :answer_id => answer_id, :answer_content => answer.content,
-      :auser_id => answer.user.id, :auser_realname => answer.user.realname,
-      :auser_aboutme => answer.user.aboutme,
-      :auser_avatar => answer.user.gravatar_url(:size => 32)
+    answer   = Answer.find answer_id
+    
+    question_hash = {
+      :json_type => "Question",
+      :id        => question_id,
+      :title     => question.title
     }
-    question.follow_user_ids.each do |user_id|
-      Watch.create(:user_id => user_id, :question_id => question_id, :content => MultiJson.encode(hash))
+    answer_hash = {
+      :json_type => "Answer",
+      :id        => answer_id,
+      :content   => answer.content,
+      :user_id   => answer.user.id,
+      :username  => answer.user.username,
+      :about_me  => answer.user.about_me
+    }
+    question.watched_user_ids.each do |user_id|
+      l = "list:#{user_id}:watched"
+      
+      e = Redis.back l
+
+      if e
+        c, i = e.split(":")
+        i = i.to_i
+        if i != question_id
+          e = "#{incr c}:#{question_id}"
+          Redis.push_back l, e
+          Redis.push_back e, MultiJson.encode(question_hash)
+        end
+        Redis.push_back e, MultiJson.encode(answer_hash)
+      else
+        e = "0:#{question_id}"
+        Redis.push_back l, e
+        Redis.push_back e, MultiJson.encode(question_hash)
+        Redis.push_back e, MultiJson.encode(answer_hash)
+      end
     end
   end
 end

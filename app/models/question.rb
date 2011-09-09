@@ -9,6 +9,10 @@ class Question < ActiveRecord::Base
   validate :enough_credit_to_pay
   validate :enough_money_to_pay
   
+  # scopes
+  scope :free, lambda { where(["credit = 0 AND money = 0.00"]) }
+  scope :paid, lambda { where(["credit <> 0 OR money <> 0.00"])}
+  
   def enough_credit_to_pay
     errors.add(:credit, "you do not have enough credit to pay.") if self.user.credit < self.credit
   end
@@ -43,8 +47,13 @@ class Question < ActiveRecord::Base
     end
   end
   
-  def follow_user_ids
-    FollowedQuestion.select('user_id').where(:question_id => self.id, :followed => 1).collect{ |item| item.user_id }
+  def watched_user_ids
+    WatchedQuestion.select('user_id').where(:question_id => self.id, :status => true).collect{ |item| item.user_id }
+  end
+  
+  def watched_by?(user_id)
+    records = WatchedQuestion.where(:user_id => user_id, :question_id => self.id)
+    records.empty? ? false : records.first.status
   end
   
   # asyncs

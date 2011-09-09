@@ -11,6 +11,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer :answers_count, :default => 0
       
       t.integer :votes_count, :default => 0
+      t.integer :vote_per_day, :default => 40
+      t.integer :credit_today, :default => 0
       
       t.integer :gpa, :default => 0
       t.integer :credit, :default => 0

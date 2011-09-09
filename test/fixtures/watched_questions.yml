@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user: 
+  question: 
+  status: 1
+
+two:
+  user: 
+  question: 
+  status: 1

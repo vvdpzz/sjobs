@@ -1,13 +1,17 @@
 class QuestionsController < ApplicationController
 
   def index
-    @questions = Question.page(params[:page]).per(1)
+    @questions = Question.paid.page(params[:page]).per(1)
 
     respond_to do |format|
       format.html
       format.js
       format.json { render :json => @questions }
     end
+  end
+  
+  def free
+    @questions = Question.free.page(params[:page]).per(1)
   end
 
   def show
@@ -69,6 +73,21 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to questions_url }
       format.json { head :ok }
+    end
+  end
+  
+  def watch
+    question = Question.find params[:id]
+    status = true
+    if question
+      records = WatchedQuestion.where(:user_id => current_user.id, :question_id => question.id)
+      if records.empty?
+        current_user.watched_questions.create(:question_id => question.id)
+      else
+        record = records.first
+        status = record.status if record.update_attribute(:status, !record.status)
+      end
+      render :json => {:status => status}
     end
   end
 end

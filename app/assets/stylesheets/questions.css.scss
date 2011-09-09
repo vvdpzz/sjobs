@@ -82,3 +82,102 @@ $text_gray: #ababab;
     display:none;
   }
 }
+.vote-area{
+  float:left;
+  width:70px;
+}
+.post{
+  margin-left:70px;
+  width:676px;
+  color:#222;
+  .title{
+  	line-height:24px;
+  	padding-bottom:8px;
+  }
+  .content{
+    font-size:14px;
+  	line-height:1.6;
+  }
+  .operate{
+    padding:12px 0;
+    a{
+      color:#5F88CE;
+      cursor:pointer;
+    }
+  }
+}
+
+//passport
+.passport{
+	padding:12px 0px;
+	.gravatar32 {
+		float: left;
+		width: 32px;
+		height: 32px;
+	}
+	.detail {
+		float: left;
+		margin-left: 8px;
+	}
+	.about-me{
+		margin-left:90px;
+	}
+	.credit {
+		font-weight: bold;
+		color: #444;
+		font-size: 14px;
+		line-height:1;
+	}
+}
+
+//vote
+.vote-up-off, .vote-up-on, .vote-down-off, .vote-down-on, .star-on, .star-off, .comment-up-off, .comment-up-on, .comment-flag, .flag-off, .vote-accepted-off, .vote-accepted-on {
+	text-indent: -9999em;
+	font-size: 1px;
+}
+.vote-up-off, .vote-down-off, .vote-accepted-off, .star-off, .comment-up-off, .flag-off {
+	cursor: pointer;
+}
+.vote-up-off, .vote-up-on, .vote-down-off, .vote-down-on, .star-on, .star-off {
+	background-position: 0px -265px;
+	display: block;
+	margin: 0 auto;
+	width: 40px;
+	height: 25px;
+}
+.vote-down-off {
+	background-position: 0px -300px;
+}
+.vote-up-on {
+background-position: 0px -230px;
+}
+.vote-down-on {
+background-position: 0px -330px;
+}
+.vote-up-off, .vote-up-on, .vote-down-off, .vote-down-on, .star-on, .star-off, .comment-up-off, .comment-up-on{
+	background-image: url(/assets/sprites.png);
+	background-repeat: no-repeat;
+	overflow: hidden;
+}
+
+.vote-count-post {
+	display: block;
+	font-size: 280%;
+	line-height:1;
+	text-align: center;
+}
+
+//
+.container h3 a{
+  color: #62412E;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, .5);
+  font-weight:bold;
+  background:url(/assets/bee.png) no-repeat 0px 2px;
+  height:40px;
+}
+.topbar ul .active a, .nav a{
+  color: #62412E;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, .5);
+  font-size:14px;
+  line-height:60px;
+}

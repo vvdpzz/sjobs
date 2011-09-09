@@ -1,5 +1,11 @@
 defaults: &defaults
   answer_price: 5
+  vote_up_limit: 15
+  vote_down_limit: 125
+  answer_vote_up: 10
+  vote_down: 2
+  answer_voter_down: 1
+  question_vote_up: 5
 
 development:
   <<: *defaults

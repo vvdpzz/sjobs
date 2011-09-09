@@ -1,20 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="col9">
+		<%= div_for(@question, :class => 'clearfix') do %>
+			<div class="vote-area">
+				<%= up_voted(@question, current_user.id) %>
+			    <span class="vote-count-post" id="question_<%= @question.id %>_vote"><%= @question.votes_count %></span>
+				<%= down_voted(@question, current_user.id) %>
+			</div>
+			<div class="post">
+				<h4 class="title"><%= safe_html @question.title %></h4>
+				<div class="content"><%= safe_html @question.content %></div>
+				<div class="operate">
+					<a>评论</a>
+					<a>编辑</a>
+					<a>标记</a>
+				</div>
+				<%= render "/partials/passport", :user => @question.user %>
+			</div>
+		<% end %>
+		<div id="answers">
+			<div id="answers-header">
+				<div class="subheader">
+					<% if @question.answers_count > 0 %>
+						<h2><%= @question.answers_count %> 个答案</h2>
+					<% end %>
+				</div>
+			</div>
+			<%= render @question.answers %>
+		</div>
+	</div>
+</div>
 
-<p>
-  <b>User:</b>
-  <%= @question.user.username %>
-</p>
-
-<p>
-  <b>Title:</b>
-  <%= @question.title %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%= @question.content %>
-</p>
-
+<% status = @question.watched_by?(current_user.id) %>
+<% btn_color = status ? "success" : "" %>
+<% btn_text = status ? :watched : :unwatch %>
+<%= link_to t(btn_text),
+		watch_question_path(@question),
+		:id => "watch-question", :class => "btn #{btn_color}" %>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>

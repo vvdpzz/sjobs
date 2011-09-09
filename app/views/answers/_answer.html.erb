@@ -1,0 +1,10 @@
+<%= div_for(answer, :class => 'clearfix') do %>
+	<div class="vote-area">
+		<%= up_voted(answer, current_user.id) %>
+	    <span class="vote-count-post" id="answer_<%= answer.id %>_vote"><%= answer.votes_count %></span>
+		<%= down_voted(answer, current_user.id) %>
+	</div>
+	<div class="post">
+		<div class="content"><%= safe_html answer.content %></div>
+	</div>
+<% end %>

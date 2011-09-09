@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   has_many :credit_transactions
   has_many :credit_prizes, :class_name => "CreditTransaction", :foreign_key => "winner_id"
   has_many :money_prizes, :class_name => "MoneyTransaction", :foreign_key => "winner_id"
+  has_many :watched_questions, :class_name => "WatchedQuestion", :foreign_key => "user_id", :conditions => {:status => true}
   
   protected
 

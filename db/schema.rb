@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110831095124) do
+ActiveRecord::Schema.define(:version => 20110908092925) do
 
   create_table "answers", :force => true do |t|
     t.integer  "user_id",                        :null => false
@@ -85,6 +85,8 @@ ActiveRecord::Schema.define(:version => 20110831095124) do
     t.integer  "questions_count",                                                     :default => 0
     t.integer  "answers_count",                                                       :default => 0
     t.integer  "votes_count",                                                         :default => 0
+    t.integer  "vote_per_day",                                                        :default => 40
+    t.integer  "credit_today",                                                        :default => 0
     t.integer  "gpa",                                                                 :default => 0
     t.integer  "credit",                                                              :default => 0
     t.decimal  "money",                                 :precision => 8, :scale => 2, :default => 0.0
@@ -103,5 +105,29 @@ ActiveRecord::Schema.define(:version => 20110831095124) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
+
+  create_table "votes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["answer_id"], :name => "index_votes_on_answer_id"
+  add_index "votes", ["question_id"], :name => "index_votes_on_question_id"
+  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
+
+  create_table "watched_questions", :force => true do |t|
+    t.integer  "user_id",                       :null => false
+    t.integer  "question_id",                   :null => false
+    t.boolean  "status",      :default => true, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "watched_questions", ["question_id"], :name => "index_watched_questions_on_question_id"
+  add_index "watched_questions", ["user_id"], :name => "index_watched_questions_on_user_id"
 
 end
