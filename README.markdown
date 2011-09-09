@@ -1,6 +1,26 @@
 Hey guys, we are happy to announce that we updated Rails to 3.1 :)
 =
 
+AND, Ruby 1.9.2 p290 is ready!
+
+```
+bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)
+
+echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function' >> ~/.bash_profile
+
+source ~/.bash_profile
+
+rvm install 1.9.2-p290
+
+rvm use 1.9.2 --default
+
+sudo gem install rails
+
+bundle
+
+sudo install_name_tool -change libmysqlclient.18.dylib /usr/local/mysql/lib/libmysqlclient.18.dylib ~/.rvm/gems/ruby-1.9.2-p290/gems/mysql2-0.3.7/lib/mysql2/mysql2.bundle
+```
+
 ## devise_invitable
     1.$ gem install devise_invitable
 
