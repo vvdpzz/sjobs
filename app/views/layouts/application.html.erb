@@ -8,30 +8,25 @@
 </head>
 <body>
 	<div class="topbar">
-		<div class="topbar-inner">
-			<div class="bar">
-				<div class="container">
-					<h3><a href="#"></a></h3>
-					<ul class="nav">
-						<li><a href="#">问题</a></li>
-						<li><a href="#">动态</a></li>
-						<li><a href="#">收件箱</a></li>
-					</ul>
-					<ul class="nav secondary-nav">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle">陈振宇</a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Secondary link</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li class="divider"></li>
-								<li><a href="#">Another link</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="tile">
-				
+		<div class="fill">
+			<div class="container">
+				<h3><a href="#">NewBee</a></h3>
+				<%= tabs_tag :builder => SegmentTabBuilder do |tab| %>
+				  <%= tab.questions	'问题',	'/questions' %>
+				  <%= tab.activity	'动态', '/activity' %>
+				  <%= tab.inbox		'消息',  '/inbox' %>
+				<% end %>
+				<ul class="nav secondary-nav">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle"><%= current_user.username %></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">个人主页</a></li>
+							<li><a href="#">设置</a></li>
+							<li class="divider"></li>
+							<li><a href="/users/sign_out">注销</a></li>
+						</ul>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>

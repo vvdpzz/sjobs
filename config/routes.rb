@@ -6,8 +6,8 @@ Sjobs::Application.routes.draw do
   resources :questions do
     resources :answers
     member do
-      get 'watch'
-      get 'free'
+      get 'follow'
+      get 'favorite'
     end
     resources :votes, :only => [] do
       collection do
@@ -26,5 +26,5 @@ Sjobs::Application.routes.draw do
     end
   end
 
-  devise_for :users
+  devise_for :users, :controllers => { :invitations => 'users/invitations' }
 end

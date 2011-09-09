@@ -10,7 +10,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20110908092925) do
+=======
+ActiveRecord::Schema.define(:version => 20110909081450) do
+>>>>>>> a712ae6a7e6385765445a2d8b94394fe330eed04
 
   create_table "answers", :force => true do |t|
     t.integer  "user_id",                        :null => false
@@ -43,6 +47,31 @@ ActiveRecord::Schema.define(:version => 20110908092925) do
   add_index "credit_transactions", ["user_id"], :name => "index_credit_transactions_on_user_id"
   add_index "credit_transactions", ["winner_id"], :name => "index_credit_transactions_on_winner_id"
 
+<<<<<<< HEAD
+=======
+  create_table "favorite_questions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.boolean  "status",      :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorite_questions", ["question_id"], :name => "index_favorite_questions_on_question_id"
+  add_index "favorite_questions", ["user_id"], :name => "index_favorite_questions_on_user_id"
+
+  create_table "followed_questions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.boolean  "status",      :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "followed_questions", ["question_id"], :name => "index_followed_questions_on_question_id"
+  add_index "followed_questions", ["user_id"], :name => "index_followed_questions_on_user_id"
+
+>>>>>>> a712ae6a7e6385765445a2d8b94394fe330eed04
   create_table "money_transactions", :force => true do |t|
     t.integer  "user_id"
     t.integer  "winner_id"

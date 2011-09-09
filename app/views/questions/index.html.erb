@@ -1,8 +1,4 @@
-<ul class="tabs">
-  <li class="active"><a href="/">付费</a></li>
-  <li><a href="/free">免费</a></li>
-  <li><a href="/watch">关注</a></li>
-</ul>
+<%= render 'tabs' %>
 <div class="row">
 	<div class="col9">
 		<div id="questions">
@@ -13,7 +9,9 @@
 			<div class="spinner"></div>
 		</div>
 	</div>
-	<div class="col3">Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World </div>
+	<div class="col3">
+		<%= link_to '提 问', new_question_path, :class => 'buttonLink', :id => 'ask-question' %>
+	</div>
 </div>
 <script>
 var current_page = 1;

@@ -18,7 +18,7 @@ class NewAnswer
       :username  => answer.user.username,
       :about_me  => answer.user.about_me
     }
-    question.watched_user_ids.each do |user_id|
+    question.followed_user_ids.each do |user_id|
       l = "list:#{user_id}:watched"
       
       e = Redis.back l

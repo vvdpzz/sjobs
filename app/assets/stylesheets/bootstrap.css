@@ -185,7 +185,7 @@ textarea {
   margin: 0 auto;
 }
 .container {
-  width: 940px;
+  width: 978px;
   margin: 0 auto;
   zoom: 1;
   margin-bottom: 18px;
@@ -390,10 +390,10 @@ body {
   font-weight: normal;
   line-height: 18px;
   color: #808080;
-  padding-top: 65px;
+  padding-top: 60px;
 }
 .container {
-  width: 940px;
+  width: 978px;
   margin: 0 auto;
 }
 .container-fluid {

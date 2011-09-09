@@ -1,4 +1,9 @@
 class QuestionsController < ApplicationController
+  set_tab :questions
+  
+  set_tab :paid,  :segment, :only => %w(index)
+  set_tab :free,  :segment, :only => %w(free)
+  set_tab :watch, :segment, :only => %w(watch)
 
   def index
     @questions = Question.paid.page(params[:page]).per(1)
@@ -76,13 +81,28 @@ class QuestionsController < ApplicationController
     end
   end
   
-  def watch
+  def follow
     question = Question.find params[:id]
     status = true
     if question
-      records = WatchedQuestion.where(:user_id => current_user.id, :question_id => question.id)
+      records = FollowedQuestion.where(:user_id => current_user.id, :question_id => question.id)
       if records.empty?
-        current_user.watched_questions.create(:question_id => question.id)
+        current_user.followed_questions.create(:question_id => question.id)
+      else
+        record = records.first
+        status = record.status if record.update_attribute(:status, !record.status)
+      end
+      render :json => {:status => status}
+    end
+  end
+  
+  def favorite
+    question = Question.find params[:id]
+    status = true
+    if question
+      records = FavoriteQuestion.where(:user_id => current_user.id, :question_id => question.id)
+      if records.empty?
+        current_user.favorite_questions.create(:question_id => question.id)
       else
         record = records.first
         status = record.status if record.update_attribute(:status, !record.status)
