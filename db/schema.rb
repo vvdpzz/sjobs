@@ -148,15 +148,4 @@ ActiveRecord::Schema.define(:version => 20110909081450) do
   add_index "votes", ["question_id"], :name => "index_votes_on_question_id"
   add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
-  create_table "watched_questions", :force => true do |t|
-    t.integer  "user_id",                       :null => false
-    t.integer  "question_id",                   :null => false
-    t.boolean  "status",      :default => true, :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "watched_questions", ["question_id"], :name => "index_watched_questions_on_question_id"
-  add_index "watched_questions", ["user_id"], :name => "index_watched_questions_on_user_id"
-
 end

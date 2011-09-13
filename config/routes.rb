@@ -26,5 +26,5 @@ Sjobs::Application.routes.draw do
     end
   end
 
-  devise_for :users, :controllers => { :invitations => 'users/invitations' }
+  devise_for :users
 end
