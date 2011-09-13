@@ -50,11 +50,22 @@
 		</div>
 	</div>
 </div>
-<%= form_for [@question, Answer.new] do |f| %>
-  <%= f.hidden_field :question_id, :value => @question.id %>
-	<%= f.text_area :content %>
-	<%= f.submit %>
-<% end %>
+<div id="create-answer">
+	<% if @question.was_not_answered_by? current_user.id %>
+		<h3 class="answer-title">添加答案</h3>
+		<div class="space"><%= render '/partials/passport', :user => current_user %></div>
+		<%= form_for([@question, Answer.new], :remote => true) do |f| %>
+		  <%= f.hidden_field :question_id, :value => @question.id %>
+			<div class="clearfix">
+				<%= f.text_area :content, :class => 'col9 border-box' %>
+			</div>
+			<%= f.submit '提交', :class => "btn primary" %>
+		<% end %>
+	<% else %>
+		<div class="answered-message">一个问题你只能回答一次，但你可以对现有的回答进行修改</div>
+	<% end %>
+</div>
+
 <script>
 var current_page = 1;
 $(function() {

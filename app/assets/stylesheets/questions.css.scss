@@ -7,6 +7,13 @@ $text_gray: #ababab;
 	border-radius: $radius;
 }
 
+@mixin border-box{
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
 #questions{
 	.question{
 		border-bottom: 1px solid #CDDCF9;
@@ -196,4 +203,11 @@ a.buttonLink{
 	text-align: center;
 	font-weight: bold;
 	cursor: pointer;
+}
+
+//custom
+textarea.col9 { width: 726px; }
+textarea {
+  height:10em;
+  @include border-box;
 }
