@@ -25,7 +25,11 @@
 					<% end %>
 				</div>
 			</div>
-			<%= render @question.answers %>
+			<%= render @answers %>
+		</div>
+		<div id="load-more" class="loading">
+			<div class="blueText">更多答案</div>
+			<div class="spinner"></div>
 		</div>
 	</div>
 	<div class="col3">
@@ -51,3 +55,25 @@
 	<%= f.text_area :content %>
 	<%= f.submit %>
 <% end %>
+<script>
+var current_page = 1;
+$(function() {
+	$("#load-more").live("click",function(){
+		$.ajax({
+			url: location.href,
+			type: "get",
+			dataType: "script",
+			data: {page: ++current_page},
+			beforeSend: function(){
+				$("#load-more .blueText").hide();
+				$("#load-more .spinner").show();
+			},
+			complete: function(){
+				$("#load-more .spinner").hide();
+				$("#load-more .blueText").show();
+			}
+		});
+		return false;
+	});
+});
+</script>

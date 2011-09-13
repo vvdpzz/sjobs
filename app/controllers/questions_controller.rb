@@ -21,9 +21,11 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @answers = @question.answers.page(params[:page]).per(5)
 
     respond_to do |format|
       format.html
+      format.js
       format.json { render :json => @question }
     end
   end

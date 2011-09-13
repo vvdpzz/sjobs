@@ -1,0 +1,5 @@
+<% if not @answers.empty? %>
+  $("#answers").append('<%= j(render "answers", :answers => @answers) %>');
+<% else %>
+  $("#load-more").remove();
+<% end %>
