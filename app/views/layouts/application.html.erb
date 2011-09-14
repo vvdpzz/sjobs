@@ -20,7 +20,7 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle"><%= current_user.username %></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">个人主页</a></li>
+							<li><a href="/users/<%= current_user.id %>">个人主页</a></li>
 							<li><a href="#">设置</a></li>
 							<li class="divider"></li>
 							<li><a href="/users/sign_out">注销</a></li>
