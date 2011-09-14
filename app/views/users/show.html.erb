@@ -1,0 +1,33 @@
+<div class="row">
+	<div class="col9">
+		<div class="user-panel clearfix">
+			<div class="big-avatar">
+				<%= image_tag "http://gravatar.com/avatar/5a4861470749020a5a1165cbe2facfbc.png?r=PG&s=128" %>
+			</div>
+			<div class="more-info">
+				<h1><%= @user.realname %></h1>
+				<div class="aboutme">
+					<%= @user.about_me %>
+				</div>
+				<div class="stats">
+					<div class="block"><div class="count"><%= @user.followers.count %></div>关注我的人</div>
+					<div class="block"><div class="count"><%= @user.following.count %></div>我关注的人</div>
+					<div class="block"><div class="count"><%= @user.questions_count %></div>我提的问题</div>
+					<div class="block"><div class="count"><%= @user.answers_count %></div>我回的答案</div>
+					<div class="block"><div class="count"><%= @user.correct_answers_count %></div>胜出的问题</div>
+				</div>
+			</div>
+		</div>
+		<div class="padding40"></div>
+		<ul class="tabs" id="user-page">
+			<li class="active"><a href="/users/<%= @user.id %>/asked">我提的问题</a></li>
+			<li class=""><a href="/users/<%= @user.id %>/answered">我回答的问题</a></li>
+		</ul>
+	</div>
+	<div class="col2">
+		<div class="operations clearfix">
+			<a class="btn" href="">关注</a>
+			<a class="btn" href="/mail/to/<%= @user.id %>">私信</a>
+		</div>
+	</div>
+</div>

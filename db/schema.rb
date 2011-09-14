@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110909081450) do
+ActiveRecord::Schema.define(:version => 20110914024433) do
 
   create_table "answers", :force => true do |t|
     t.integer  "user_id",                        :null => false
@@ -64,6 +65,17 @@ ActiveRecord::Schema.define(:version => 20110909081450) do
 
   add_index "followed_questions", ["question_id"], :name => "index_followed_questions_on_question_id"
   add_index "followed_questions", ["user_id"], :name => "index_followed_questions_on_user_id"
+
+  create_table "followed_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "follower_id"
+    t.boolean  "status",      :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "followed_users", ["follower_id"], :name => "index_followed_users_on_follower_id"
+  add_index "followed_users", ["user_id"], :name => "index_followed_users_on_user_id"
 
   create_table "money_transactions", :force => true do |t|
     t.integer  "user_id"

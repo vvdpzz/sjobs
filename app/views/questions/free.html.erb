@@ -4,12 +4,14 @@
 		<div id="questions">
 			<%= render "free", :questions => @questions %>
 		</div>
+		<% if not @questions.empty? %>
 		<div id="load-more" class="loading">
 			<div class="blueText">更多问题</div>
 			<div class="spinner"></div>
 		</div>
+		<% end %>
 	</div>
-	<div class="col3">
+	<div id="sidebar">
 		<%= link_to '提 问', new_question_path, :class => 'buttonLink', :id => 'ask-question' %>
 	</div>
 <script>

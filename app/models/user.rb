@@ -28,6 +28,33 @@ class User < ActiveRecord::Base
   has_many :favorite_questions, :class_name => "FavoriteQuestion", :foreign_key => "user_id", :conditions => {:status => true}
   has_many :followed_questions, :class_name => "FollowedQuestion", :foreign_key => "user_id", :conditions => {:status => true}
   
+  has_many :followers, :class_name => "FollowedUser", :foreign_key => "user_id"
+  has_many :following, :class_name => "FollowedUser", :foreign_key => "follower_id"
+  
+  def has_relationship_redis(user_id)
+    $redis.sismember("users:#{user_id}.follows", self.id)
+  end
+  
+  def has_relationship_db(follower_id)
+    FollowedUser.where(:user_id => self.id, :follower_id => follower_id, :status => true)
+  end
+  
+  def async_follow_user(user_id)
+    Resque.enqueue(FollowUser, user_id, self.id, self.realname)
+  end
+  
+  def update_by_sql(user_id, follower_id)
+    sql = ActiveRecord::Base.connection()
+    sql.execute "SET autocommit=0"
+    sql.begin_db_transaction
+    sql.update "update followed_users set status = false where user_id = #{user_id} and follower_id = #{follower_id}";
+    sql.commit_db_transaction
+  end
+  
+  def correct_answers_count
+    Answer.where(:user_id => self.id, :is_correct => true).count
+  end
+  
   protected
 
   def create_login
