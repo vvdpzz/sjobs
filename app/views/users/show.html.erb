@@ -26,8 +26,10 @@
 	</div>
 	<div class="col2">
 		<div class="operations clearfix">
+			<% if @user.id != current_user.id %>
 			<a class="btn" href="/users/<%= @user.id %>/follow">关注</a>
 			<a class="btn" href="/mail/to/<%= @user.id %>">私信</a>
+			<% end %>
 		</div>
 	</div>
 </div>
