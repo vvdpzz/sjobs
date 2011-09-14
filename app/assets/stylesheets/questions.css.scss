@@ -14,6 +14,12 @@ $text_gray: #ababab;
   -webkit-box-sizing: border-box;
 }
 
+.title-height{
+  height:48px;
+  resize:none;
+  overflow:hidden;
+}
+
 #questions{
 	.question{
 		border-bottom: 1px solid #CDDCF9;
@@ -41,7 +47,6 @@ $text_gray: #ababab;
 			line-height:21px;
 		}
 		.timestamp{
-//    color: #5F88CE;
       color:#bfbfbf!important;
 			font-size:12px;
 		}

@@ -1,42 +1,43 @@
-<%= form_for(@question) do |f| %>
-  <% if @question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
-
-      <ul>
-      <% @question.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </div>
-	<% if not edit_mode %>
-  <div class="field">
-    <%= f.label :credit %><br />
-    <%= f.text_field :credit, :rel => "popover", :data => {:title => "A Title", :content => "You need 5 credits at least."} %>
-  </div>
-  <div class="field">
-    <%= f.label :money %><br />
-    <%= f.text_field :money %>
-  </div>
-	<% end %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-<script>
-  $(function () {
-    $("input[rel=popover]").popover({
-      offset: 10
-    })
-  })
-</script>
+<div class="row">
+	<div class="span12 columns">
+		<%= form_for(@question) do |f| %>
+		<fieldset>
+			<div class="clearfix">
+				<label for="text_area">标题</label>
+				<div class="input">
+					<%= f.text_area :title, :class => 'xxlarge title-height' %>
+					<span class="help-block">必填，最多70个字</span>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="input">
+					<%= f.text_area :content, :class => 'xxlarge h-large' %>
+					<span class="help-block">可选，详细描述你的问题</span>
+				</div>
+			</div>
+			<% if not edit_mode %>
+			<div class="clearfix">
+				<label for="">积分</label>
+				<div class="input">
+					<%= f.text_field :credit %>
+				</div>
+			</div>
+			<div class="clearfix">
+				<label for="">金钱</label>
+				<div class="input">
+					<%= f.select :money, 11.times.collect{|i| [i, i]}, {}, {:class => 'medium'} %> 元
+				</div>
+			</div>
+			<% end %>
+			<div class="actions">
+				<%= f.submit '提交', :class => "btn primary" %>
+				<% if not edit_mode %>
+					<%= link_to "取消", @question, :class => "btn" %>
+				<% else %>
+				  <%= link_to "取消", questions_url, :class => "btn" %>
+				<% end %>
+			</div>
+		</fieldset>
+		<% end %>
+	</div>
+</div>
