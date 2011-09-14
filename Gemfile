@@ -33,6 +33,9 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'execjs'
+gem 'therubyracer'
+
 gem 'jquery-rails'
 
 # Use unicorn as the web server
