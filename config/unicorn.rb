@@ -14,5 +14,6 @@ after_fork do |server, worker|
   ActiveRecord::Base.establish_connection
 end
 
-stderr_path "#{Rails.root}/log/unicorn.log"
-stdout_path "#{Rails.root}/log/unicorn.log"
+app_path = "/root/dev/sjobs"
+stderr_path "#{app_path}/log/unicorn.log"
+stdout_path "#{app_path}/log/unicorn.log"
