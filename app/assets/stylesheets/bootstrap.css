@@ -381,7 +381,7 @@ textarea {
   margin-left: 660px;
 }
 html, body {
-  background-color: #fff;
+/*  background-color: #fff;*/
 }
 body {
   margin: 0;
@@ -418,14 +418,15 @@ body {
   margin-left: 240px;
 }
 a {
-  color: #0069d6;
+/*  color: #0069d6;*/
+  color:#00ADEE;
   text-decoration: none;
   line-height: inherit;
   font-weight: inherit;
 }
 a:hover {
-  color: #0050a3;
-  text-decoration: underline;
+  color: #0096cd;
+  text-decoration: none;
 }
 /* Typography.less
  * Headings, body text, lists, code, and more for a versatile and durable typography system

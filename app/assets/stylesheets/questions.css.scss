@@ -41,7 +41,8 @@ $text_gray: #ababab;
 			line-height:21px;
 		}
 		.timestamp{
-			color: #5F88CE;
+//    color: #5F88CE;
+      color:#bfbfbf!important;
 			font-size:12px;
 		}
 	}
@@ -91,12 +92,11 @@ $text_gray: #ababab;
 }
 .vote-area{
   float:left;
-  width:70px;
+  width:50px;
 }
 .post{
-  margin-left:70px;
-  width:676px;
-  color:#222;
+  margin-left:60px;
+  color:#444;
   .title{
   	line-height:24px;
   	padding-bottom:8px;
@@ -114,6 +114,49 @@ $text_gray: #ababab;
   }
 }
 
+#sidebar {
+float: right;
+overflow: hidden;
+margin: 12px 0 60px 0;
+width: 200px;
+}
+
+#create-answer{
+  margin-top:30px;
+}
+
+//
+#question-header {
+	border-bottom: 1px solid #bbb;
+}
+#question-header h1 {
+	color: #444;
+	margin-bottom: 0!important;
+}
+#question-header h1 {
+	font-size: 18px;
+	padding: 9px;
+	line-height: 1.4;
+}
+#question-header .question-hyperlink {
+	font-size: 21px;
+	line-height: 23px;
+	font-weight: bold;
+	color: #00adee;
+}
+#question-header .question-hyperlink:visited {
+	color: #00adee;
+}
+.question-hyperlink {
+	font-weight: normal;
+	line-height: 1.1;
+	font-size: 17px;
+	margin-bottom: 1.2em;
+}
+
+#mainbar .question{
+  padding-top:10px;
+}
 //passport
 .passport{
 	padding:12px 0px;
@@ -138,50 +181,61 @@ $text_gray: #ababab;
 }
 
 //vote
-.vote-up-off, .vote-up-on, .vote-down-off, .vote-down-on, .star-on, .star-off, .comment-up-off, .comment-up-on, .comment-flag, .flag-off, .vote-accepted-off, .vote-accepted-on {
-	text-indent: -9999em;
-	font-size: 1px;
+.vote-area{
+  text-align:center;
 }
-.vote-up-off, .vote-down-off, .vote-accepted-off, .star-off, .comment-up-off, .flag-off {
-	cursor: pointer;
-}
-.vote-up-off, .vote-up-on, .vote-down-off, .vote-down-on, .star-on, .star-off {
-	background-position: 0px -265px;
-	display: block;
-	margin: 0 auto;
-	width: 40px;
-	height: 25px;
-}
-.vote-down-off {
-	background-position: 0px -300px;
-}
-.vote-up-on {
-background-position: 0px -230px;
-}
-.vote-down-on {
-background-position: 0px -330px;
-}
-.vote-up-off, .vote-up-on, .vote-down-off, .vote-down-on, .star-on, .star-off, .comment-up-off, .comment-up-on{
+.vote-up-off,.vote-up-on,.vote-down-off,.vote-down-on,.star-on,.star-off,.comment-up-off,.comment-up-on,.flag-off,.flag-on,.edited-yes,a.cc-wiki-link,.feed-icon,.vote-accepted-off,.vote-accepted-on,.vote-accepted-bounty,.badge-earned-check,.delete-tag,.delete-tag-hover,.grippie,.expander-arrow-hide,.expander-arrow-show,.expander-arrow-small-hide,.expander-arrow-small-show,.anonymous-gravatar,.badge1,.badge2,.badge3 {
 	background-image: url(/assets/sprites.png);
 	background-repeat: no-repeat;
 	overflow: hidden;
 }
+.vote-up-off,.vote-up-on,.vote-down-off,.vote-down-on,.star-on,.star-off {
+	display: block;
+	margin: 0 auto;
+	text-indent: -999em;
+	background-position: 0 -170px;
+	width: 28px;
+	height: 28px;
+}
+.vote-up-off,.vote-down-off,.vote-accepted-off,.star-off,.comment-up-off,.flag-off {
+	cursor: pointer;
+}
+.vote-up-off,.vote-up-on,.vote-down-off,.vote-down-on,.star-on,.star-off,.comment-up-off,.comment-up-on,.comment-flag,.flag-off,.vote-accepted-off,.vote-accepted-on {
+	text-indent: -9999em;
+	font-size: 1px;
+}
+.vote-up-on {
+	background-position: -40px -170px;
+}
+.vote-down-off {
+	background-position: 0 -220px;
+	margin-bottom: 5px;
+}
+.vote-down-on {
+	background-position: -40px -220px;
+	margin-bottom: 5px;
+}
+.star-off {
+	background-position: 1px -120px;
+}
+.star-on {
+	background-position: -40px -120px;
+}
 
 .vote-count-post {
-	display: block;
-	font-size: 280%;
-	line-height:1;
-	text-align: center;
+	color: #707070!important;
+	line-height: 17px!important;
+	padding: 6px 0 9px 0!important;
+	font-size: 22px;
 }
 
 //
 #ask-question{
-	width: 190px;
+	width: 160px;
 	height:46px;
 	line-height:46px;
 	color:white;
 	font-size:30px;
-	margin-top:10px;
 }
 a.buttonLink{
 	border: 1px solid #EDA42E;
@@ -210,4 +264,31 @@ textarea.col9 { width: 726px; }
 textarea {
   height:10em;
   @include border-box;
+}
+
+//post menu
+.post-menu {
+	padding-top: 12px;
+}
+.post-menu > a {
+	padding: 0px 3px 2px 3px;
+	color: #888;
+}
+.post-menu > a:hover {
+	color: #444;
+	text-decoration: none;
+}
+.post-menu .lsep {
+	margin: 0px;
+	padding: 0px;
+}
+.post-menu > a {
+	padding: 1px 6px;
+	margin-right: 1px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+.post-menu > a:hover {
+	background-color: #faea91;
 }

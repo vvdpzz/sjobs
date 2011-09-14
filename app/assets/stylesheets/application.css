@@ -7,3 +7,22 @@
  *= require 978
  *= require_tree . 
 */
+html {
+	background: #f8f8f8 url(/assets/bg.png) repeat center -4px;
+}
+.layout-978{
+  padding: 10px;
+  background: white;
+  -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+#mainbar {
+  float: left;
+  margin: 0 5px 10px 10px;
+  width: 726px;
+}
