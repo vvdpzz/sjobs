@@ -37,6 +37,6 @@ production:
   reconnect: false
   database: sjobs_production
   pool: 5
-  username: root
-  password:
+  username: admin
+  password: something
   host: localhost
