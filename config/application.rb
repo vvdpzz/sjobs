@@ -46,4 +46,107 @@ module Sjobs
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end
+  class API < Grape::API
+    prefix 'api'
+
+    helpers do
+      def warden
+        env['warden']
+      end
+
+      def authenticated
+        if warden.authenticated?
+          return true
+        elsif params[:access_token] and
+          User.find_for_token_authentication("access_token" => params[:access_token])
+          return true
+        elsif params[:xapp_token] and
+          AccessGrant.find_access(params[:xapp_token])
+          return true
+        else
+          error!('401 Unauthorized', 401)
+        end
+      end
+
+      def current_user
+        warden.user || User.find_for_token_authentication("access_token" => params[:access_token])
+      end
+
+      # returns 401 if there's no current user
+      def authenticated_user
+        authenticated
+        error!('401 Unauthorized', 401) unless current_user
+      end
+    end
+
+    resource 'questions' do
+      get do
+        authenticated_user
+        Question.all
+      end
+
+      get '/paid' do
+        Question.paid
+      end
+
+      get '/free' do
+        Question.free
+      end
+
+      get '/watch' do
+      end
+
+      get '/:id' do
+      end
+
+      get '/:id/follow' do
+      end
+
+      get '/:id/favorite' do
+      end
+
+      post do
+      end
+
+      post '/:id/answers' do
+      end
+
+      get '/:id/vote_up' do
+      end
+
+      get '/:id/vote_down' do
+      end
+
+      post '/:id/comments' do
+      end
+
+      get '/:question_id/answers/:id/accept' do
+      end
+    end
+    resource 'answers' do
+      post '/:id/comments' do
+      end
+
+      get '/:id/vote_up' do
+      end
+
+      get '/:id/vote_down' do
+      end
+    end
+
+    resource 'users' do
+      get '/:id' do
+      end
+
+      get '/:id/follow' do
+      end
+
+      get '/:id/unfollow' do
+      end
+    end
+
+    resource '/activity' do
+    end
+
+  end
 end

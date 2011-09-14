@@ -1,4 +1,7 @@
 Sjobs::Application.routes.draw do
+  
+  mount Sjobs::API => "/"
+  
   root :to => 'questions#index'
   
   match '/free' => 'questions#free', :via => 'get', :as => :free_questions
