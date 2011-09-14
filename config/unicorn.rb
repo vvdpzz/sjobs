@@ -1,6 +1,6 @@
 #usage:
 #Start:
-#     $ unicorn_rails -c config/unicorn.rb -D
+#     $ unicorn_rails -c config/unicorn.rb -E production -D
 #Monitor:
 #     $ pgrep -lf unicorn_rails
 #Stop:
