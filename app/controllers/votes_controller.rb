@@ -1,3 +1,5 @@
+# coding: UTF-8
+
 class VotesController < ApplicationController
   before_filter :who_called_vote
   

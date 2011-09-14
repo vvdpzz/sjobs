@@ -1,3 +1,5 @@
+# coding: UTF-8
+
 class QuestionsController < ApplicationController
   set_tab :questions
   

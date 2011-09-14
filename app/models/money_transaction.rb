@@ -1,3 +1,5 @@
+# coding: UTF-8
+
 class MoneyTransaction < ActiveRecord::Base
   has_enumeration_for :trade_type, :with => TradeType
   has_enumeration_for :trade_status, :with => TradeStatus
