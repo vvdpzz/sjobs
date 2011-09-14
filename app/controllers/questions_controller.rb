@@ -18,12 +18,12 @@ class QuestionsController < ApplicationController
   end
   
   def free
-    @questions = Question.free.page(params[:page]).per(1)
+    @questions = Question.free.page(params[:page]).per(Settings.questions_per_page)
   end
 
   def show
     @question = Question.find(params[:id])
-    @answers = @question.answers.page(params[:page]).per(5)
+    @answers = @question.answers.page(params[:page]).per(Settings.answers_per_page)
 
     respond_to do |format|
       format.html

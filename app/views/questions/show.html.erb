@@ -25,7 +25,7 @@
 			</div>
 			<%= render @answers %>
 		</div>
-		<% if @question.answers_count > 0 %>
+		<% if @question.answers_count > Settings.answers_per_page %>
 		<div id="load-more" class="loading">
 			<div class="blueText">更多答案</div>
 			<div class="spinner"></div>

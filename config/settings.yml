@@ -6,6 +6,8 @@ defaults: &defaults
   vote_down: 2
   answer_voter_down: 1
   question_vote_up: 5
+  answers_per_page: 10
+  questions_per_page: 15
 
 development:
   <<: *defaults

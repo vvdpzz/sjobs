@@ -4,10 +4,7 @@
 		<div id="questions">
 			<%= render "index", :questions => @questions %>
 		</div>
-		<div id="load-more" class="loading">
-			<div class="blueText">更多问题</div>
-			<div class="spinner"></div>
-		</div>
+		<%= render :partial => 'load_more' %>
 	</div>
 	<div id="sidebar">
 		<%= link_to '提 问', new_question_path, :class => 'buttonLink', :id => 'ask-question' %>
