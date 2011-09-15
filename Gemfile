@@ -27,6 +27,9 @@ gem 'tabs_on_rails'
 
 gem 'grape'
 
+gem "mongoid", "~> 2.2"
+gem "bson_ext", "~> 1.3"
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
