@@ -25,6 +25,8 @@ gem 'kaminari'
 
 gem 'tabs_on_rails'
 
+gem 'grape'
+
 gem "mongoid", "~> 2.2"
 
 gem "bson_ext", "~> 1.3"

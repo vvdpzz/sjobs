@@ -31,7 +31,7 @@
 			<% end %>
 			<div class="actions">
 				<%= f.submit '提交', :class => "btn primary" %>
-				<% if not edit_mode %>
+				<% if edit_mode %>
 					<%= link_to "取消", @question, :class => "btn" %>
 				<% else %>
 				  <%= link_to "取消", questions_url, :class => "btn" %>
