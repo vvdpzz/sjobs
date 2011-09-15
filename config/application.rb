@@ -80,12 +80,9 @@ module Sjobs
     end
 
     resource 'questions' do
-      get do
-        authenticated_user
-        Question.all
-      end
 
       get '/paid' do
+        authenticated_user
         Question.paid
       end
 
@@ -94,6 +91,9 @@ module Sjobs
       end
 
       get '/watch' do
+      end
+      
+      get '/nearby' do
       end
 
       get '/:id' do
