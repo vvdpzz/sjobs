@@ -5,6 +5,7 @@ Sjobs::Application.routes.draw do
   root :to => 'questions#index'
   
   match '/free' => 'questions#free', :via => 'get', :as => :free_questions
+  match '/watch' => 'questions#watch', :via => "get", :as => :wateched_questions
   
   resources :questions do
     resources :answers

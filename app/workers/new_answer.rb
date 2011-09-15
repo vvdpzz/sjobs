@@ -24,16 +24,16 @@ class NewAnswer
       e = Redis.back l
 
       if e
-        c, i = e.split(":")
+        u, c, i = e.split(":")
         i = i.to_i
         if i != question_id
-          e = "#{incr c}:#{question_id}"
+          e = "#{user_id}:#{incr c}:#{question_id}"
           Redis.push_back l, e
           Redis.push_back e, MultiJson.encode(question_hash)
         end
         Redis.push_back e, MultiJson.encode(answer_hash)
       else
-        e = "0:#{question_id}"
+        e = "#{user_id}:0:#{question_id}"
         Redis.push_back l, e
         Redis.push_back e, MultiJson.encode(question_hash)
         Redis.push_back e, MultiJson.encode(answer_hash)

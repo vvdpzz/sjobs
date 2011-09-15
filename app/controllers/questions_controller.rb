@@ -115,4 +115,10 @@ class QuestionsController < ApplicationController
       render :json => {:status => status}
     end
   end
+  
+  def watch
+    l = "list:#{2}:watched"
+    items = $redis.lrange(l, 0, -1)
+    @list = items.collect{ |item| $redis.lrange(item, 0, -1) }
+  end
 end

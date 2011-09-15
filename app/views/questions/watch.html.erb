@@ -1,0 +1,10 @@
+<% @list.each do |item| %>
+	<% item.each do |entry| %>
+		<% e = JSON.parse entry %>
+		<% if e['json_type'] == "Question" %>
+			<b><%= e['title'] %></b></br>
+		<% else %>
+		  <%= e['content'] %>
+		<% end %>
+	<% end %>
+<% end %>
