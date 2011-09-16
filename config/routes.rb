@@ -1,5 +1,9 @@
 Sjobs::Application.routes.draw do
   
+  resources :locations
+  #get "location/new"
+  #match "/location/new" => "location#new"
+
   mount Sjobs::API => "/"
   
   root :to => 'questions#index'

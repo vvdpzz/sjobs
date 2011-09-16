@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  recv_time: 2011-09-15 17:43:53
+  long_lat: MyString
+  z_elev: 9.99
+  velocity: 9.99
+  accel: 9.99
+  direction: 9.99
+  pitch: 9.99
+  roll: 9.99
+  battery: 9.99
+  confidence: 9.99
+  message: MyString
+
+two:
+  user_id: 1
+  recv_time: 2011-09-15 17:43:53
+  long_lat: MyString
+  z_elev: 9.99
+  velocity: 9.99
+  accel: 9.99
+  direction: 9.99
+  pitch: 9.99
+  roll: 9.99
+  battery: 9.99
+  confidence: 9.99
+  message: MyString

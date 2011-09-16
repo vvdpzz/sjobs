@@ -1,0 +1,25 @@
+<h1>Location Created</h1>
+
+<table>
+  <tr>
+    <th>User_id</th>
+    <th>User_name</th>
+    <th>longitude</th>
+    <th>latitude</th>
+    <th>time</th>
+  </tr>
+
+  <tr>
+    <td><%= @location.user_id %></td>
+    <td><%= @location.user_name %></td>
+    <td><%= @location.longitude %></td>
+    <td><%= @location.latitude %></td>
+    <td><%= @location.time %></td>
+  </tr>
+</table>
+
+<br />
+
+
+<%= link_to 'List', locations_path %>
+<%= link_to 'New Location', new_location_path %>
