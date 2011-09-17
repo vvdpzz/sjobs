@@ -21,6 +21,23 @@ bundle
 sudo install_name_tool -change libmysqlclient.18.dylib /usr/local/mysql/lib/libmysqlclient.18.dylib ~/.rvm/gems/ruby-1.9.2-p290/gems/mysql2-0.3.7/lib/mysql2/mysql2.bundle
 ```
 
+## How to start app
+
+###Step 0 (Optional)
+	bundle
+###Step 1 start Redis
+	sudo redis-server /usr/local/etc/redis.conf
+###Step 2 start Mongodb
+	sudo mongod run --config /usr/local/Cellar/mongodb/1.8.3-x86_64/mongod.conf
+###Step 3 start MySQL
+	...
+###Step 4 start resque
+	QUEUE=* rake resque:work
+###Step 5 start resque web
+	resque-web
+###Step 6 start WEBrick
+	rails s
+
 ## devise_invitable
     1.$ gem install devise_invitable
 

@@ -72,4 +72,8 @@ class Question < ActiveRecord::Base
     Resque.enqueue(NewAnswer, self.id, answer_id)
   end
   
+  def async_accept_answer(answer_id)
+    Resque.enqueue(AcceptAnswer, self.id, answer_id)
+  end
+  
 end

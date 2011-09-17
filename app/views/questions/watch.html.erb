@@ -1,0 +1,17 @@
+<%= render 'tabs' %>
+<div class="row">
+	<div class="col9">
+		<div id="questions">
+			<% @list.each do |item| %>
+				<% item.each do |entry| %>
+					<% e = JSON.parse entry %>
+					<% if e['json_type'] == "Question" %>
+						<b><%= e['title'] %></b></br>
+					<% else %>
+					  <%= e['content'] %>
+					<% end %>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>

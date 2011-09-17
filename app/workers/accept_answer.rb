@@ -1,5 +1,5 @@
-class NewAnswer
-  @queue = :new_answer
+class AcceptAnswer
+  @queue = :accept_answer
 
   def self.perform(question_id, answer_id)
     question = Question.find question_id
@@ -11,7 +11,7 @@ class NewAnswer
       :title     => question.title
     }
     answer_hash = {
-      :json_type => "Answer",
+      :json_type => "Accept",
       :id        => answer_id,
       :content   => answer.content,
       :user_id   => answer.user.id,
