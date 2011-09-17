@@ -17,7 +17,6 @@ class QuestionsController < ApplicationController
     end
   end
   
-  
   def free
     @questions = Question.free.page(params[:page]).per(Settings.questions_per_page)
   end

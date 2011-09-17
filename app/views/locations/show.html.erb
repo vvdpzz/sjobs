@@ -4,17 +4,15 @@
   <tr>
     <th>User_id</th>
     <th>User_name</th>
-    <th>longitude</th>
-    <th>latitude</th>
-    <th>time</th>
+    <th>longitude and latitude</th>
+    <th>receive_time</th>
   </tr>
 
   <tr>
     <td><%= @location.user_id %></td>
     <td><%= @location.user_name %></td>
-    <td><%= @location.longitude %></td>
-    <td><%= @location.latitude %></td>
-    <td><%= @location.time %></td>
+    <td><%= @location.lat_long %></td>
+    <td><%= @location.receive_time %></td>
   </tr>
 </table>
 

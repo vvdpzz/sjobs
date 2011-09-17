@@ -2,9 +2,10 @@ class Location
   include Mongoid::Document
   field :user_id, :type => Integer
   field :user_name
-  field :time, :type => Time, :default =>Time.now
-  field :longitude, :type => String
-  field :latitude, :type => String
+  field :receive_time, :type => Time
+  attr_accessor :latitude
+  attr_accessor :longtitude
+  field :lat_long, :type => Array
   field :z_elev
   field :velocity
   field :accel

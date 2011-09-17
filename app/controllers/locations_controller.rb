@@ -18,8 +18,11 @@ class LocationsController < ApplicationController
   end
   
   def create
-    @location = Location.new(params[:location])
-
+    #@location = Location.new(params[:location])
+    @location = Location.create(:user_id =>current_user.id,
+                                :user_name =>current_user.username,
+                                :receive_time =>Time.now,
+                                :lat_long => [params[:location][:longtitude].to_i,params[:location][:latitude].to_i] )    
     respond_to do |format|
       if @location.save
         format.html { redirect_to @location, :notice => 'location was successfully created.' }

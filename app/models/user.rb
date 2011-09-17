@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   # Relations
   has_many :questions
   has_many :answers
-  
+  has_many :locations
   has_many :money_transactions
   has_many :credit_transactions
   
