@@ -3,8 +3,10 @@
 2 Usage in MySQL: mysql> call sp_deduct_credit_and_money ('test','test',1,0,10.00)
 3 Usage in Rails: ActiveRecord::Base.connection.execute("call sp_deduct_credit_and_money('#{title}','#{content}',#{id},#{credit},#{money})") @question_controller.rb
 */
+/* Drop if Exists */
+DROP PROCEDURE IF EXISTS sjobs_development.sp_deduct_credit_and_money
 
-DROP PROCEDURE IF EXISTS 'SJOBS_development'.'sp_deduct_credit_and_money' //
+/* Crete Stored Procedure*/
 DELIMITER //
 CREATE PROCEDURE sp_deduct_credit_and_money (
 	in title varchar(100),
@@ -100,5 +102,4 @@ end if;
 end if;
 end if;
 end if;
-END//
-DELIMITER;
+END
