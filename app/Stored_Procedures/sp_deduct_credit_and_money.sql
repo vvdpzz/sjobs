@@ -13,20 +13,25 @@ CREATE PROCEDURE sp_deduct_credit_and_money (
 	in content text,
 	in user_id int,
 	in deduct_credit int,
-	in deduct_money DECIMAL(8,2))
+	in deduct_money DECIMAL(8,2),
+	out question_id int)
 BEGIN
-DECLARE question_id int UNSIGNED DEFAULT 0;
 IF deduct_credit = 0 AND deduct_money =0.00 THEN
 	START TRANSACTION;
  	/* Create a new question */
 	INSERT INTO questions (answers_count, content, correct_answer_id, created_at, credit, money, title, updated_at, user_id, votes_count) VALUES (0, content, 0, NOW(), deduct_credit, deduct_money, title, NOW(), user_id, 0);
 
+	/* Get new question id*/
+	select id into @question_id from questions order by id desc limit 1;
+	
+	select @question_id;
 	/* update user info*/
 	UPDATE users
    		SET questions_count = COALESCE(questions_count, 0) + 1,
 					  updated_at = NOW(), 
 					  credit = credit - deduct_credit
  	  WHERE users.id = user_id;
+	
 	COMMIT;
 ELSE IF deduct_credit > 0 AND deduct_money =0.00 THEN
 	START TRANSACTION;
@@ -37,7 +42,7 @@ ELSE IF deduct_credit > 0 AND deduct_money =0.00 THEN
 
 	/* Get new question id*/
 	select id into @question_id from questions order by id desc limit 1;
-	
+	select @question_id;
 	/* update user info*/
 	UPDATE users
    		SET questions_count = COALESCE(questions_count, 0) + 1,
@@ -48,6 +53,7 @@ ELSE IF deduct_credit > 0 AND deduct_money =0.00 THEN
 	/*insert into tran*/
 	INSERT INTO credit_transactions (answer_id, created_at, payment, question_id, trade_status, trade_type, 	updated_at, user_id, value, winner_id) 
 	VALUES (NULL, NOW(), 1, @question_id, 0, 0, NOW(), user_id, deduct_credit, NULL);
+	
 	COMMIT;
 ELSE IF deduct_credit = 0 AND deduct_money > 0.00 THEN
 	START TRANSACTION;
@@ -58,7 +64,7 @@ ELSE IF deduct_credit = 0 AND deduct_money > 0.00 THEN
 
 	/* Get new question id*/
 	select id into @question_id from questions order by id desc limit 1;
-	
+	select @question_id;
 	/* update user info*/
 	UPDATE users
    		SET questions_count = COALESCE(questions_count, 0) + 1,
@@ -70,7 +76,7 @@ ELSE IF deduct_credit = 0 AND deduct_money > 0.00 THEN
 	INSERT INTO money_transactions (answer_id, created_at, payment, question_id, trade_status, 
 	trade_type, updated_at, user_id, value, winner_id) 
 	VALUES (NULL, now(), 1, @question_id, 0, 0, now(), user_id, deduct_money, NULL);
-
+	
 	COMMIT;
 ELSE IF deduct_credit > 0 AND deduct_money > 0.00 THEN
 	START TRANSACTION;
@@ -80,7 +86,7 @@ ELSE IF deduct_credit > 0 AND deduct_money > 0.00 THEN
 
 	/* Get new question id*/
 	select id into @question_id from questions order by id desc limit 1;
-	
+	select @question_id;
 	/* update user info*/
 	UPDATE users
    		SET questions_count = COALESCE(questions_count, 0) + 1,
@@ -96,7 +102,7 @@ ELSE IF deduct_credit > 0 AND deduct_money > 0.00 THEN
 	INSERT INTO money_transactions (answer_id, created_at, payment, question_id, trade_status, 
 	trade_type, updated_at, user_id, value, winner_id) 
 	VALUES (NULL, now(), 1, @question_id, 0, 0, now(), user_id, deduct_money, NULL);
-
+	
 	COMMIT;
 end if;
 end if;

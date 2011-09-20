@@ -53,8 +53,8 @@ class QuestionsController < ApplicationController
     credit = params[:question][:credit]
     money = params[:question][:money]
     id = current_user.id
-    ActiveRecord::Base.connection.execute("call sp_deduct_credit_and_money('#{title}','#{content}',#{id},#{credit},#{money})")
-    
+    results = ActiveRecord::Base.connection.execute("call sp_deduct_credit_and_money('#{title}','#{content}',#{id},#{credit},#{money},@question_id)")
+    puts results
     respond_to do |format|
       if @question.save
         @question.credit_rewarded? and @question.deduct_credit and @question.order_credit
