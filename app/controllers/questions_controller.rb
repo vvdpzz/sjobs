@@ -47,7 +47,14 @@ class QuestionsController < ApplicationController
 
   def create
     @question = current_user.questions.build(params[:question])
-
+    #question_id = current_user.questions.id
+    title = params[:question][:title]
+    content = params[:question][:content]
+    credit = params[:question][:credit]
+    money = params[:question][:money]
+    id = current_user.id
+    ActiveRecord::Base.connection.execute("call sp_deduct_credit_and_money('#{title}','#{content}',#{id},#{credit},#{money})")
+    
     respond_to do |format|
       if @question.save
         @question.credit_rewarded? and @question.deduct_credit and @question.order_credit
