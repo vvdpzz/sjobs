@@ -53,10 +53,10 @@ class QuestionsController < ApplicationController
     credit = params[:question][:credit]
     money = params[:question][:money]
     id = current_user.id
-    results = ActiveRecord::Base.connection.execute("call sp_deduct_credit_and_money('#{title}','#{content}',#{id},#{credit},#{money},@question_id)")
-    puts results
+    ActiveRecord::Base.connection.execute("call sp_deduct_credit_and_money('#{title}','#{content}',#{id},#{credit},#{money}")
+
     respond_to do |format|
-      if @question.save
+      if @question.valid
         @question.credit_rewarded? and @question.deduct_credit and @question.order_credit
         @question.money_rewarded? and @question.deduct_money and @question.order_money
         format.html { redirect_to @question, :notice => 'Question was successfully created.' }
